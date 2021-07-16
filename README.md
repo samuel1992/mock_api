@@ -9,5 +9,5 @@ Its really simple just as a proof of concept so feel free to implement fancier f
 Its under docker and docker compose so just run `docker-compose build` and `docker-compose up`.
 
 # Next features?!
-- Implement a pattern match by the body on PUT and POST requests
-- Modify the response based on a header passed by the client. That could be useful when you whant to simulate an error or something like this.
+- Implement a pattern match with the body on PUT, POST and PATCH requests
+- Return custom response based on a parameter in the request header. That could be useful when you want to simulate an error or something like this.

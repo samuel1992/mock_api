@@ -2,6 +2,8 @@ import re
 
 from django.http import JsonResponse
 
+from django.views.decorators.csrf import csrf_exempt
+
 from api.models import Path
 
 NOT_FOUND_RESPONSE = {
@@ -23,6 +25,7 @@ def endpoint_to_regex(endpoint):
     return regex
 
 
+@csrf_exempt
 def router(request, endpoint):
     requested_endpoint = '/' + endpoint
     re_endpoint = endpoint_to_regex(endpoint)

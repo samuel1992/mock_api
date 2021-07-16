@@ -2,7 +2,7 @@ from django.test import TestCase
 
 from api.models import Path, MockResponse
 
-from api.views import endpoint_to_regex, router, NOT_FOUND_RESPONSE
+from api.views import endpoint_to_regex, NOT_FOUND_RESPONSE
 
 
 class PathAndMockResponseNameTest(TestCase):

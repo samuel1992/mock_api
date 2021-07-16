@@ -29,8 +29,9 @@ def router(request, endpoint):
 
     for path in Path.objects.all():
         re_endpoint = endpoint_to_regex(path.endpoint_string)
+        match = re.match(re_endpoint, requested_endpoint)
 
-        if re.match(re_endpoint, requested_endpoint):
+        if match and request.method == path.http_method:
             return JsonResponse(data=path.mockresponse.body,
                                 status=path.mockresponse.status)
 

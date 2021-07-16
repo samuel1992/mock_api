@@ -3,10 +3,10 @@ from django.db import models
 
 class Path(models.Model):
     HTTP_METHODS = [
-        ('post', 'POST'),
-        ('post', 'PUT'),
-        ('post', 'GET'),
-        ('post', 'PATCH')
+        ('POST', 'POST'),
+        ('PUT', 'PUT'),
+        ('GET', 'GET'),
+        ('PATCH', 'PATCH')
     ]
 
     endpoint_string = models.CharField(max_length=300)

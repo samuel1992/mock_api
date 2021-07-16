@@ -9,7 +9,6 @@ services:
       - '8000:8000'
     volumes:
       - .:/mock-api
-    command: 'python manage.py migrate'
   db:
     image: postgres
     ports:

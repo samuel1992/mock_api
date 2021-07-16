@@ -21,4 +21,5 @@ from api import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^(?P<endpoint>.*)/$', views.router, name='router'),
+    re_path(r'^(?P<endpoint>.*)$', views.router, name='router'),
 ]

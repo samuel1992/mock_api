@@ -1,3 +1,5 @@
+import json
+
 from django.db import models
 
 from openapi_schema_validator import validate
@@ -22,7 +24,7 @@ class Path(models.Model):
 
     def validate_body(self, body):
         if self.http_method in REQUESTS_WITH_BODY:
-            validate(body, self.body_schema)
+            validate(json.loads(body), self.body_schema)
 
 
 class MockResponse(models.Model):

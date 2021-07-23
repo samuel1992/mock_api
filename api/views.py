@@ -38,7 +38,7 @@ def router(request, endpoint):
         match = re.match(re_endpoint, requested_endpoint)
 
         try:
-            path.validate_body(json.loads(request.body))
+            path.validate_body(request.body)
         except ValidationError as err:
             return JsonResponse(data={'ERROR': err.message}, status=400)
 

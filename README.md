@@ -47,3 +47,6 @@ Select the http method you want to request for that endpoint and then the JSON b
 In case of PUT/PATCH/POST methods you also can specify a definition of the request body following the OpenAPI spec in json format. [OPENAPI SPECIFICATION](https://swagger.io/specification/)
 
 ![editing a path](/docs/images/editing_a_path.png)
+
+# Possible next features
+- import swagger/openapi files in order to create the endpoint

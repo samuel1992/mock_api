@@ -1,10 +1,15 @@
 import json
+import re
 
 from django.db import models
 
 from openapi_schema_validator import validate
 
 REQUESTS_WITH_BODY = ['POST', 'PUT', 'PATCH']
+PATTERNS = {
+    '\\{string\\}': '[A-z]+',
+    '\\{integer\\}': '[0-9]+'
+}
 
 
 class Path(models.Model):
@@ -25,6 +30,17 @@ class Path(models.Model):
     def validate_body(self, body):
         if self.http_method in REQUESTS_WITH_BODY:
             validate(json.loads(body), self.body_schema)
+
+    def to_regex(self):
+        pattern = re.compile('|'.join(PATTERNS.keys()))
+        regex = pattern.sub(lambda m: PATTERNS[re.escape(m.group(0))],
+                            self.endpoint_string)
+        regex += '$'
+
+        return regex
+
+    def matches(self, endpoint):
+        return bool(re.match(self.to_regex(), endpoint))
 
 
 class MockResponse(models.Model):
